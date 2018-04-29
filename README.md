@@ -1,18 +1,11 @@
-# vuetify-dashboard
+# Vuetify dashboard.
 
-> A Vue.js project
+There isn't much to say about this repo yet but this is going to be for an application built in Vuetify framework.
+The main objective is to build a full-featured application that includes:
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- Authentication and authorization.
+- Theamable.
+- Support for multiple modules.
+- Real time communication.
+- CI/CD capabilities.
+- And some other features.
