@@ -7,4 +7,5 @@ The main objective is to build a full-featured application that includes:
 - Theamable.
 - Support for multiple modules.
 - Real time communication.
+- CI/CD capabilities.
 - And some other features.
