@@ -1,6 +1,6 @@
 # Vuetify dashboard.
 
-There is much to say about this repo but this is going to be for an application built in Vuetify framework.
+There isn't much to say about this repo yet but this is going to be for an application built in Vuetify framework.
 The main objective is to build a full-featured application that includes:
 
 - Authentication and authorization.
