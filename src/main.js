@@ -1,36 +1,34 @@
-import Vue from 'vue'
-import App from './App.vue'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.css'
-import VueRouter from 'vue-router'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Main from './Main.vue';
+import VueRouter from 'vue-router';
+import Vuex from 'vuex';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.css';
 
-import Index from './Index.vue'
+// Helpers
+import colors from 'vuetify/es5/util/colors';
 
-Vue.use(Vuex)
-Vue.use(Vuetify)
-Vue.use(VueRouter)
 
-const router = new VueRouter({
-  routes: [
-    { path: '/index', component: Index }
-  ]
-});
+// -------------------------------------
+// Setup.
+// -------------------------------------
 
-const store = new Vuex.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment (state) {
-      state.count++;
-    }
-  }
-})
+Vue.use(Vuex);
+Vue.use(Vuetify);
+Vue.use(VueRouter);
+
+// -------------------------------------
+// Router.
+// -------------------------------------
+
+import router from './router.js';
+
+// -------------------------------------
+// Boot.
+// -------------------------------------
 
 new Vue({
   el: '#app',
   router,
-  store,
-  render: h => h(App)
+  render: h => h(Main)
 });
