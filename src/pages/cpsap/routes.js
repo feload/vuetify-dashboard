@@ -28,7 +28,7 @@ export default [{
           navdata: {
             id: "configuracion",
             title: "Configuración",
-            icon: "settings_application"
+            icon: "settings"
           },
           path: 'configuracion',
           component: configuracion

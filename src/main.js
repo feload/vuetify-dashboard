@@ -3,7 +3,7 @@ import Main from './Main.vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.css';
+import './stylus/main.styl';
 
 // Helpers
 import colors from 'vuetify/es5/util/colors';

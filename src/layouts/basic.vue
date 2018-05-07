@@ -1,6 +1,17 @@
 <template>
   <v-app :id="moduleId">
-    <navigationDrawer :show="drawer" :items="navigationItems" />
+    <v-navigation-drawer fixed app v-model="drawer">
+      <v-list dense>
+        <navigationList
+          v-for="item in navigationItems"
+          :children="item.children"
+          :icon="item.icon"
+          :title="item.title"
+          :path="item.path"
+          :key="item.id"
+          :depth="0" />
+      </v-list>
+    </v-navigation-drawer>
     <v-toolbar color="indigo" dark app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>{{ moduleTitle }}</v-toolbar-title>
@@ -22,13 +33,13 @@
 
 <script>
 import navigationMixin from '../mixins/navigation';
-import navigationDrawer from '../components/molecules/navigationDrawer';
+import navigationList from '../components/atoms/navigationList';
 
 export default {
   mixins: [navigationMixin],
 
   data: () => ({
-    drawer: true
+    drawer: null
   }),
 
   props: {
@@ -38,7 +49,7 @@ export default {
   },
 
   components: {
-    navigationDrawer
+    navigationList
   }
 }
 </script>

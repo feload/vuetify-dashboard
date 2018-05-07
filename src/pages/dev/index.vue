@@ -1,6 +1,7 @@
 <template>
   <basicLayout>
-  <div><h2>Development</h2></div>
+    <p>Development</p>
+    <router-view></router-view>
   </basicLayout>
 </template>
 <script>

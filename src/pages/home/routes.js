@@ -2,8 +2,8 @@ import index from './index.vue';
 
 export default [{
   navdata: {
-    id: "home",
-    title: "Home DRH",
+    id: "inicio",
+    title: "Inicio",
     icon: "home",
   },
   path: '/',
