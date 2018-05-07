@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router';
-import home from './pages/home/routes.js';
-import cpsap from './pages/cpsap/routes.js';
-import dev from './pages/dev/routes.js';
-import common from './pages/common/routes.js';
+import home from './modules/home/routes.js';
+import cpsap from './modules/cpsap/routes.js';
+import dev from './modules/dev/routes.js';
+import common from './modules/common/routes.js';
 
 // -------------------------------------
 // Routes collection.

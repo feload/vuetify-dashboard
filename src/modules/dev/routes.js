@@ -1,5 +1,5 @@
-import index from './index.vue';
-import visor from './visor/index';
+import index from './pages/index.vue';
+import visor from './pages/visor/index';
 
 export default [{
   navdata: {

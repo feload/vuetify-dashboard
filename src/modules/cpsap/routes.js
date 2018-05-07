@@ -1,10 +1,9 @@
-import index from './index.vue';
-import validadores from './validadores/index.vue';
-import configuracion from './validadores/configuracion.vue';
-import exportar from './validadores/exportar.vue';
-
-import estadisticas from './estadisticas/index.vue';
-import detalleEstadistica from './estadisticas/detalle.vue';
+import index from './pages/index.vue';
+import validadores from './pages/validadores/index.vue';
+import configuracion from './pages/validadores/configuracion.vue';
+import exportar from './pages/validadores/exportar.vue';
+import estadisticas from './pages/estadisticas/index.vue';
+import detalleEstadistica from './pages/estadisticas/detalle.vue';
 
 export default [{
   navdata: {
