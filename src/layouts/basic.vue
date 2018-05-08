@@ -1,5 +1,5 @@
 <template>
-  <v-app :id="moduleId">
+  <v-app :id="id">
     <v-navigation-drawer fixed app v-model="drawer">
       <div class="logo">
         <img class="logo__image ml-2 mt-1" src="public/ug-horz.png" alt="Universidad de Guanajuato">
@@ -17,7 +17,7 @@
     </v-navigation-drawer>
     <v-toolbar color="indigo darken-2" dark app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{ moduleTitle }}</v-toolbar-title>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <slot></slot>
@@ -40,8 +40,8 @@ export default {
   }),
 
   props: {
-    moduleId: String,
-    moduleTitle: String,
+    id: String,
+    title: String,
     source: String
   },
 
