@@ -20,18 +20,7 @@
       <v-toolbar-title>{{ moduleTitle }}</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid fill-height>
-        <v-layout v-if="layoutType == 'all-center'" justify-center align-center>
-          <v-flex text-xs-center>
-            <slot></slot>
-          </v-flex>
-        </v-layout>
-        <v-layout v-else>
-          <v-flex shrink>
-            <slot></slot>
-          </v-flex>
-        </v-layout>
-      </v-container>
+      <slot></slot>
     </v-content>
     <v-footer color="indigo darken-2 pl-2" app>
       <span class="white--text">Universidad de Guanajuato &copy; 2017</span>
@@ -53,8 +42,7 @@ export default {
   props: {
     moduleId: String,
     moduleTitle: String,
-    source: String,
-    layoutType: String
+    source: String
   },
 
   components: {

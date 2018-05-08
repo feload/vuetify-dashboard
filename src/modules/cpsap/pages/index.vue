@@ -2,7 +2,6 @@
   <basicLayout
     id="CPSAP"
     moduleTitle="CPSAP">
-    CPSAP
     <router-view></router-view>
   </basicLayout>
 </template>
