@@ -1,21 +1,28 @@
 import Vue from 'vue';
-import Main from './Main.vue';
+import main from './main.vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
 import './stylus/main.styl';
 
-// Helpers
-import colors from 'vuetify/es5/util/colors';
+// -------------------------------------
+// Helpers.
+// -------------------------------------
 
+import colors from 'vuetify/es5/util/colors';
 
 // -------------------------------------
 // Setup.
 // -------------------------------------
 
-Vue.use(Vuex);
 Vue.use(Vuetify);
 Vue.use(VueRouter);
+
+// -------------------------------------
+// State.
+// -------------------------------------
+
+import store from './store.js';
 
 // -------------------------------------
 // Router.
@@ -30,5 +37,6 @@ import router from './router.js';
 new Vue({
   el: '#app',
   router,
-  render: h => h(Main)
+  store,
+  render: h => h(main)
 });

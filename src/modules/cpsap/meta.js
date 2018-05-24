@@ -1,4 +1,4 @@
 export default {
-  id: "CPSAP",
+  id: "DRHValidador",
   title: "Validador de códigos SAP."
 }
