@@ -1,5 +1,4 @@
 import VueRouter from 'vue-router';
-import store from '@/store';
 
 import home from './modules/home/routes.js';
 import cpsap from './modules/cpsap/routes.js';

@@ -20,6 +20,7 @@
       <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-toolbar>
     <v-content>
+      {{ isLoggedIn }}
       <slot></slot>
     </v-content>
     <v-footer color="indigo darken-2 pl-2" app>
@@ -29,11 +30,12 @@
 </template>
 
 <script>
-import navigationMixin from '../mixins/navigation';
+import navigationMixin from '@/lib/navigation/mixin.js';
+import authMixin from '@/lib/auth/mixin.js';
 import navigationList from '../components/atoms/navigationList';
 
 export default {
-  mixins: [navigationMixin],
+  mixins: [authMixin, navigationMixin],
 
   data: () => ({
     drawer: null
@@ -48,5 +50,6 @@ export default {
   components: {
     navigationList
   }
+
 }
 </script>

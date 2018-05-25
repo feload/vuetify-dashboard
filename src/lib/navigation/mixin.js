@@ -1,4 +1,4 @@
-import { navigationItems } from '../router';
+import { navigationItems } from '@/router';
 
 export default {
   computed: {
