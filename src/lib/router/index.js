@@ -1,7 +1,3 @@
-/**
- * getNavigation().
- * Builds navigation map.
- */
 export const getNavigation = (collection, rootPath, rootId, parent, level) => {
   for (let item of collection) {
 
@@ -16,3 +12,24 @@ export const getNavigation = (collection, rootPath, rootId, parent, level) => {
     if (item.children) getNavigation(item.children, realPath, realId, parent[id].children, level + 1);
   }
 };
+
+const genReplaceRegExp = (regexp, replacement) => {
+  return { regexp, replacement };
+}
+
+export const genRouteId = (path) => {
+
+  const patterns = [
+    genReplaceRegExp(/\//g, '__'),
+    genReplaceRegExp(/(__:[a-zA-Z]+)/, ''),
+    genReplaceRegExp(/^(__)/, '')
+  ];
+
+  let idRoute = path;
+
+  patterns.map(({ regexp, replacement }) => {
+    idRoute = idRoute.replace(regexp, replacement);
+  });
+
+  return idRoute;
+}

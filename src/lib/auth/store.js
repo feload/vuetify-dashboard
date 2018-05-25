@@ -3,11 +3,15 @@
 //#############################################
 
 import http from '../resources/http';
+import { flatPermissions } from './collections';
+import ObservableArray from 'observable-array';
 
 import {
   INACTIVE,
   GETTING_PERMISSIONS
 } from './types';
+
+const permSub = ObservableArray();
 
 const initialState = {
   session_state: null,
@@ -17,7 +21,8 @@ const initialState = {
   token_type: null,
   scope: null,
   status: INACTIVE,
-  permissions: []
+  permissions: [],
+  permSub: []
 }
 
 export default {
@@ -26,8 +31,13 @@ export default {
   state: initialState,
 
   getters: {
+
     get (state) {
       return state;
+    },
+
+    permSub () {
+      return permSub;
     },
 
     authStatus ({ status }) {
@@ -38,8 +48,12 @@ export default {
       return (access_token != null);
     },
 
-    permissions ({ permissions }) {
+    permissionsRaw ({ permissions }) {
       return permissions;
+    },
+
+    permissionsList ({ permissions }) {
+      return flatPermissions(permissions);
     },
 
     permissionsLoaded({ permissions }) {
@@ -57,14 +71,17 @@ export default {
     isGettingPermissions ({ status }) {
       return (status == GETTING_PERMISSIONS);
     }
+
   },
 
   mutations: {
+
     setStatus (state, payload) {
       state.status = payload;
     },
 
     setPermissions (state, payload) {
+      permSub.push([flatPermissions(payload)]);
       state.permissions = payload;
     },
 
@@ -88,30 +105,43 @@ export default {
   },
 
   actions: {
-    getPermissions({ commit, state }, payload) {
-        commit('setStatus', GETTING_PERMISSIONS);
 
-        const { profile, accessToken } = state;
-        const config = { requestId: "AuthGetPermissions" }
-        const vars = { idEmpleado: profile.id_empleado };
-        const params = { param1: "paramvalue1" }
+    getPermissions({ commit, state }) {
+      commit('setStatus', GETTING_PERMISSIONS);
 
-        http(
-          'permissionsApi',
-          'todo',
-          vars,
-          params,
-          accessToken,
-          config).then(({ data }) => {
-            const { modulos } = data;
-            commit('setPermissions', modulos);
-            commit('setStatus', INACTIVE);
+      const { profile, accessToken } = state;
+      const vars = { idEmpleado: profile.id_empleado };
+      const params = { param1: "paramvalue1" };
+      const config = { requestId: "AuthGetPermissions" };
+
+      http(
+        'permissionsApi',
+        'todo',
+        vars,
+        params,
+        accessToken,
+        config)
+
+        .then((response) => {
+          const { modulos } = response.data;
+          commit('setPermissions', modulos);
+        })
+
+        .catch((err) => {
+          reject(err);
+        })
+
+        .then(() => {
+          commit('setStatus', INACTIVE);
         });
+
     },
 
     setAuth ({ commit, getters, dispatch }, payload) {
+
       commit('setAuthState', payload || initialState);
-      if (getters['permissionsLoaded'] == false) dispatch('getPermissions', payload);
+      if (getters['permissionsLoaded'] == false) dispatch('getPermissions');
+
     }
   },
 }

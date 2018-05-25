@@ -12,13 +12,14 @@
             :icon="item.icon"
             :title="item.title"
             :path="item.path"
+            :routeId="item.id"
             :key="item.id"
             :depth="0" />
         </v-list>
       </v-navigation-drawer>
       <v-toolbar color="indigo darken-2" dark app>
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title>{{ title }}</v-toolbar-title>
+        <v-toolbar-title>{{ title }} {{ auth.access_token.substr(-10) }}</v-toolbar-title>
       </v-toolbar>
       <v-content>
         {{ authStatus }}
@@ -33,7 +34,6 @@
       <v-layout justify-center align-center>
         <v-flex text-xs-center>
           <v-progress-circular :size="45" indeterminate color="primary"></v-progress-circular>
-          <p>{{ authStatus }}</p>
         </v-flex>
       </v-layout>
       </v-container>

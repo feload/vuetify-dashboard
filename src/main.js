@@ -1,9 +1,10 @@
 import Vue from 'vue';
-import main from './main.vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
 import './stylus/main.styl';
+import main from './main.vue';
+import { getUser, signIn } from './lib/auth';
 
 // -------------------------------------
 // Helpers.
