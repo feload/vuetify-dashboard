@@ -1,0 +1,2 @@
+export const INACTIVE = 'INACTIVE';
+export const GETTING_PERMISSIONS = 'GETTING_PERMISSIONS';

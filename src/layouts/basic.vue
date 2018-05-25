@@ -1,31 +1,43 @@
 <template>
   <v-app :id="id">
-    <v-navigation-drawer fixed app v-model="drawer">
-      <div class="logo">
-        <img class="logo__image ml-2 mt-1" src="public/ug-horz.png" alt="Universidad de Guanajuato">
-      </div>
-      <v-list class="pt-0" dense>
-        <navigationList
-          v-for="item in navigationItems"
-          :children="item.children"
-          :icon="item.icon"
-          :title="item.title"
-          :path="item.path"
-          :key="item.id"
-          :depth="0" />
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar color="indigo darken-2" dark app>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
-    </v-toolbar>
-    <v-content>
-      {{ isLoggedIn }}
-      <slot></slot>
-    </v-content>
-    <v-footer color="indigo darken-2 pl-2" app>
-      <span class="white--text">Universidad de Guanajuato &copy; 2017</span>
-    </v-footer>
+    <template v-if="authIsReady">
+      <v-navigation-drawer fixed app v-model="drawer">
+        <div class="logo">
+          <img class="logo__image ml-2 mt-1" src="public/ug-horz.png" alt="Universidad de Guanajuato">
+        </div>
+        <v-list class="pt-0" dense>
+          <navigationList
+            v-for="item in navigationItems"
+            :children="item.children"
+            :icon="item.icon"
+            :title="item.title"
+            :path="item.path"
+            :key="item.id"
+            :depth="0" />
+        </v-list>
+      </v-navigation-drawer>
+      <v-toolbar color="indigo darken-2" dark app>
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
+      </v-toolbar>
+      <v-content>
+        {{ authStatus }}
+        <slot></slot>
+      </v-content>
+      <v-footer color="indigo darken-2 pl-2" app>
+        <span class="white--text">Universidad de Guanajuato &copy; 2017</span>
+      </v-footer>
+    </template>
+    <template v-else>
+      <v-container fluid fill-height>
+      <v-layout justify-center align-center>
+        <v-flex text-xs-center>
+          <v-progress-circular :size="45" indeterminate color="primary"></v-progress-circular>
+          <p>{{ authStatus }}</p>
+        </v-flex>
+      </v-layout>
+      </v-container>
+    </template>
   </v-app>
 </template>
 

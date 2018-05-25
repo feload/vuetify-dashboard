@@ -24,7 +24,7 @@ const removeUserAndSignIn = () => {
 ///////////////////////////////
 
 manager.events.addUserLoaded((user) => {
-  store.commit('auth/set', user);
+  store.dispatch('auth/setAuth', user);
 });
 
 manager.events.addAccessTokenExpired(removeUserAndSignIn);
@@ -48,7 +48,7 @@ export const signInCallback = () => {
   manager.signinRedirectCallback()
   .then((user) => {
     userTmp = user;
-    store.commit('auth/set', user);
+    store.dispatch('auth/setAuth', user);
   }).catch((error) => {
     console.log(error);
   });
@@ -68,7 +68,7 @@ if (userTmp == null){
     if (user == null){
       signIn();
     }else{
-      store.commit('auth/set', user);
+      store.dispatch('auth/setAuth', user);
     }
   });
 }
