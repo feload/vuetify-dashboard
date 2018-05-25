@@ -25,6 +25,7 @@ const routes = [
 ];
 
 const publicRoutes = [
+    '/',
     ...auth.map((r) => {
       return r.path
     }),
