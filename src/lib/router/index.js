@@ -18,15 +18,13 @@ const genReplaceRegExp = (regexp, replacement) => {
 }
 
 export const genRouteId = (path) => {
-
   const patterns = [
     genReplaceRegExp(/\//g, '__'),
-    genReplaceRegExp(/(__:[a-zA-Z]+)/, ''),
+    genReplaceRegExp(/(__:[a-zA-Z_]+)/, ''),
     genReplaceRegExp(/^(__)/, '')
   ];
 
   let idRoute = path;
-
   patterns.map(({ regexp, replacement }) => {
     idRoute = idRoute.replace(regexp, replacement);
   });

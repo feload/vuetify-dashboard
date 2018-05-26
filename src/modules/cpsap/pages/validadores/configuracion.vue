@@ -6,9 +6,6 @@
 <script>
 import authMixin from '@/lib/auth/mixin';
 export default {
-  mixins: [authMixin],
-  mounted() {
-    console.log('mounted');
-  }
+  mixins: [authMixin]
 }
 </script>
