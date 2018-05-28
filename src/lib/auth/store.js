@@ -36,6 +36,10 @@ export default {
       return state;
     },
 
+    profile (state) {
+      return state.profile;
+    },
+
     permSub () {
       return permSub;
     },

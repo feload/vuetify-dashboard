@@ -3,7 +3,7 @@
     <template v-if="authIsReady">
       <v-navigation-drawer fixed app v-model="drawer">
         <div class="logo">
-          <img class="logo__image ml-2 mt-1" src="public/ug-horz.png" alt="Universidad de Guanajuato">
+          <img class="logo__image ml-3 mt-2" src="public/ug-horz.png" alt="Universidad de Guanajuato">
         </div>
         <v-list class="pt-0" dense>
           <navigationList
@@ -19,10 +19,25 @@
       </v-navigation-drawer>
       <v-toolbar color="indigo darken-2" dark app>
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <v-toolbar-title>{{ title }} {{ auth.access_token.substr(-10) }}</v-toolbar-title>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon>notifications</v-icon>
+        </v-btn>
+        <v-menu bottom left>
+            <v-btn slot="activator" icon dark>
+              <v-avatar size="36px">
+                <img :src="`http://siidrh.ugto.mx/ws/APIPerfilBasico/Foto/${profile.sub}/md`">
+              </v-avatar>
+            </v-btn>
+            <v-list>
+              <v-list-tile @click="authSignOut">
+                <v-list-tile-title>Cerrar sesión</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
       </v-toolbar>
       <v-content>
-        {{ authStatus }}
         <slot></slot>
       </v-content>
       <v-footer color="indigo darken-2 pl-2" app>
